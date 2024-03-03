@@ -6,7 +6,7 @@ import { authProvider } from "src/authProvider";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-export default function PostList() {
+export default function NotesList() {
   const { tableProps } = useTable();
   
   
@@ -21,6 +21,7 @@ export default function PostList() {
       <Table {...tableProps} rowKey="id">
         <Table.Column dataIndex="title" title="Title" />
         <Table.Column dataIndex="content" title="Content" />
+        <Table.Column dataIndex="created_by" title="Created By" />
         <Table.Column dataIndex="created_at" title="Created at" />
         <Table.Column
           title="Actions"
@@ -56,7 +57,7 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
           ...translateProps,
         },
         redirect: {
-          destination: `${redirectTo}?to=${encodeURIComponent("/posts")}`,
+          destination: `${redirectTo}?to=${encodeURIComponent("/notes")}`,
           permanent: false,
         },
       };

@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { authProvider } from "src/authProvider";
 
-export default function PostCreate() {
+export default function NotesCreate() {
   return <AntdCreateInferencer hideCodeViewerInProduction/>;
 }
 
@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
         ...translateProps,
       },
       redirect: {
-        destination: `${redirectTo}?to=${encodeURIComponent("/posts")}`,
+        destination: `${redirectTo}?to=${encodeURIComponent("/notes")}`,
         permanent: false,
       },
     };

@@ -149,11 +149,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
                     },
                   },
                   {
-                    name: "posts",
-                    list: "/posts",
-                    create: "/posts/create",
-                    edit: "/posts/edit/:id",
-                    show: "/posts/show/:id",
+                    name: "notes",
+                    list: "/notes",
+                    create: "/notes/create",
+                    edit: "/notes/edit/:id",
+                    show: "/notes/show/:id",
                     meta: {
                       canDelete: true,
                       icon:<TableOutlined />,

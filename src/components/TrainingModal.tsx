@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Avatar, Card, Col, Descriptions, Modal, Row, Button, Space } from 'antd';
 import { supabaseClient } from 'src/utility'; // Import the supabase client instance
 import Meta from 'antd/lib/card/Meta';
-import QR from './QR';
 
 // Define an interface for the data structure
 interface TrainingData {

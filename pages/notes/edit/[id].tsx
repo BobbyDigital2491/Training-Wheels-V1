@@ -1,10 +1,10 @@
-import { AntdShowInferencer } from "@refinedev/inferencer/antd";
+import { AntdEditInferencer } from "@refinedev/inferencer/antd";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { authProvider } from "src/authProvider";
 
-export default function PostShow() {
-  return <AntdShowInferencer hideCodeViewerInProduction/>;
+export default function NotesEdit() {
+  return <AntdEditInferencer hideCodeViewerInProduction/>;
 }
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
         ...translateProps,
       },
       redirect: {
-        destination: `${redirectTo}?to=${encodeURIComponent("/posts")}`,
+        destination: `${redirectTo}?to=${encodeURIComponent("/notes")}`,
         permanent: false,
       },
     };

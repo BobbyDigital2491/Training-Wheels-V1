@@ -140,21 +140,21 @@
     }
   },
   "documentTitle": {
-    "default": "refine",
-    "suffix": " | refine",
+    "default": "Training Wheels",
+    "suffix": " | training wheels",
     "blog_posts": {
-      "list": "Blog Posts | refine",
-      "show": "#{{id}} Show Blog Post | refine",
-      "edit": "#{{id}} Edit Blog Post | refine",
-      "create": "Create new Blog Post | refine",
-      "clone": "#{{id}} Clone Blog Post | refine"
+      "list": "Blog Posts | Training Wheels",
+      "show": "#{{id}} Show Blog Post | Training Wheels",
+      "edit": "#{{id}} Edit Blog Post | Training Wheels",
+      "create": "Create new Blog Post | Training Wheels",
+      "clone": "#{{id}} Clone Blog Post | Training Wheels"
     },
     "categories": {
-      "list": "Categories | refine",
-      "show": "#{{id}} Show Category | refine",
-      "edit": "#{{id}} Edit Category | refine",
-      "create": "Create new Category | refine",
-      "clone": "#{{id}} Clone Category | refine"
+      "list": "Categories | Training Wheels",
+      "show": "#{{id}} Show Category | Training Wheels",
+      "edit": "#{{id}} Edit Category | Training Wheels",
+      "create": "Create new Category | Training Wheels",
+      "clone": "#{{id}} Clone Category | Training Wheels"
     }
   },
   "table": {
