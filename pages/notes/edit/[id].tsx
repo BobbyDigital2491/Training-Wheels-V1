@@ -9,7 +9,7 @@ import { Edit, useForm } from "@refinedev/antd";
 const { Title } = Typography;
 const { TextArea } = Input;
 
-export default function ProductEdit() {
+export default function NotesEdit() {
   const { formProps, saveButtonProps, formLoading } = useForm();
 
   return (

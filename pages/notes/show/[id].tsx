@@ -1,9 +1,10 @@
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { authProvider } from "src/authProvider";
-import { MarkdownField, NumberField, Show, TextField } from "@refinedev/antd";
-import { Typography } from "antd";
+import { DateField, ImageField, Show, TextField } from "@refinedev/antd";
+import { Card, Divider, Typography } from "antd";
 import { useShow } from "@refinedev/core";
+
 
 const { Title } = Typography;
 
@@ -15,14 +16,27 @@ export default function NotesShow() {
 
   return (
     <Show isLoading={isLoading}>
+      <Card>
       <Title level={5}>Title</Title>
       <TextField value={record?.title ?? ""} />
+      <Divider/>
       <Title level={5}>Content</Title>
       <TextField value={record?.content} />
+      <Divider/>
       <Title level={5}>Created By</Title>
-      <TextField value={record?.created_by} />
+      <ImageField
+          value={record?.avatar_url}
+          title="Created By"
+          width={150}
+          
+          />
+      <Divider/>
       <Title level={5}>Created At</Title>
-      <MarkdownField value={record?.created_at} />
+      <DateField
+          value={record?.created_at}
+          title="Created At"
+        />
+      </Card>
     </Show>
   );
 };
