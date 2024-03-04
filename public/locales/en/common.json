@@ -141,7 +141,7 @@
   },
   "documentTitle": {
     "default": "Training Wheels",
-    "suffix": " | training wheels",
+    "suffix": " | Training wheels",
     "blog_posts": {
       "list": "Blog Posts | Training Wheels",
       "show": "#{{id}} Show Blog Post | Training Wheels",
