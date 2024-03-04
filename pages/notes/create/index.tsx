@@ -33,7 +33,7 @@ export default function NotesCreate() {
                 },
             ]}
         >
-            <Input />
+            <TextArea rows={4} />
         </Form.Item>
         <Form.Item
             label="Created By"
@@ -44,7 +44,7 @@ export default function NotesCreate() {
                 },
             ]}
         >
-            <TextArea rows={4} />
+            <Input />
         </Form.Item>
         <Form.Item
             label="Created At"
