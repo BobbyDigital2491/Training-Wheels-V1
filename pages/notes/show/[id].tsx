@@ -2,7 +2,7 @@ import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { authProvider } from "src/authProvider";
 import { DateField, ImageField, Show, TextField } from "@refinedev/antd";
-import { Card, Divider, Typography } from "antd";
+import { Card, Divider, Space, Typography } from "antd";
 import { useShow } from "@refinedev/core";
 
 
@@ -28,8 +28,9 @@ export default function NotesShow() {
           value={record?.avatar_url}
           title="Created By"
           width={150}
-          
           />
+          <br/>
+      <TextField value={record?.display_name} />
       <Divider/>
       <Title level={5}>Created At</Title>
       <DateField
