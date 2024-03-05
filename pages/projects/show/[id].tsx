@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { authProvider } from "src/authProvider";
-import { DateField, ImageField, Show, TextField } from "@refinedev/antd";
+import { DateField, ImageField, MarkdownField, Show, TextField } from "@refinedev/antd";
 import { Card, Divider, Space, Typography } from "antd";
 import { useShow } from "@refinedev/core";
 
@@ -21,7 +21,7 @@ export default function ProjectsShow() {
       <TextField value={record?.projects ?? ""} />
       <Divider/>
       <Title level={5}>Content</Title>
-      <TextField value={record?.content} />
+      <MarkdownField value={record?.content} />
       <Divider/>
       <Title level={5}>Created By</Title>
       <ImageField
