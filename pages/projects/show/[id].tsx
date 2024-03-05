@@ -18,7 +18,7 @@ export default function ProjectsShow() {
     <Show isLoading={isLoading}>
       <Card>
       <Title level={5}>Title</Title>
-      <TextField value={record?.projects ?? ""} />
+          <TextField value={record?.projects ?? ""} />
       <Divider/>
       <Title level={5}>Content</Title>
       <MarkdownField value={record?.content} />

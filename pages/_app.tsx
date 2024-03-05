@@ -127,9 +127,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
                   {
                     name: "Training-Modules",
                     list: "/training-modules",
-                    create: "/categories/create",
-                    edit: "/categories/edit/:id",
-                    show: "/categories/show/:id",
+                    create: "/training-modules/create",
+                    edit: "/training-modules/edit/:id",
+                    show: "/training-modules/show/:id",
                     meta: {
                       canDelete: true,
                       icon:<ProjectOutlined />,
