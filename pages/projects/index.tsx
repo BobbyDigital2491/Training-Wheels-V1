@@ -1,6 +1,6 @@
 import React from "react";
-import { List, ShowButton, EditButton, useTable, DeleteButton, Create, CreateButton } from "@refinedev/antd";
-import { Card, Col, Row, Space, Statistic, Table } from "antd";
+import { List, ShowButton, EditButton, useTable, DeleteButton } from "@refinedev/antd";
+import { Card, Space, Table } from "antd";
 import { BaseRecord } from "@refinedev/core";
 import { authProvider } from "src/authProvider";
 import { GetServerSideProps } from "next";
@@ -14,11 +14,10 @@ export default function ProjectList() {
     <Card>
     <List>
     <Table {...tableProps} rowKey="id">
-      
       <Table.Column dataIndex="projects" title="Title" />
       <Table.Column dataIndex="content" title="Content" />
-      <Table.Column dataIndex="completion_status" title="Progress" />
-      <Table.Column dataIndex="full_name" title="On task" />
+      <Table.Column dataIndex="created_by" title="Created By" />
+      <Table.Column dataIndex="created_at" title="Created At" />
       <Table.Column
         title="Actions"
         dataIndex="actions"
