@@ -23,7 +23,7 @@ import { appWithTranslation, useTranslation } from "next-i18next";
 import { authProvider } from "src/authProvider";
 import { AppIcon } from "src/components/app-icon";
 import { supabaseClient } from "src/utility";
-import { AppstoreOutlined, DashboardOutlined, DeliveredProcedureOutlined, MenuOutlined, ProjectOutlined, SolutionOutlined, StarOutlined, StarTwoTone, TableOutlined, UserOutlined } from "@ant-design/icons";
+import { AppstoreOutlined, DashboardOutlined, DeliveredProcedureOutlined, ExperimentOutlined, MenuOutlined, ProjectOutlined, SafetyCertificateOutlined, SolutionOutlined, StarOutlined, StarTwoTone, TableOutlined, UserOutlined } from "@ant-design/icons";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   noLayout?: boolean;
@@ -119,7 +119,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
                     show: "/JES/show/:id",
                     meta: {
                       canDelete: true,
-                      icon:<DeliveredProcedureOutlined />,
+                      icon:<SafetyCertificateOutlined />,
                       parent:"Operations",
                       label:"JES"
                     },
@@ -132,7 +132,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
                     show: "/training-modules/show/:id",
                     meta: {
                       canDelete: true,
-                      icon:<ProjectOutlined />,
+                      icon:<ExperimentOutlined />,
                       parent:"Operations",
                       label:"Training Modules",
                     },
