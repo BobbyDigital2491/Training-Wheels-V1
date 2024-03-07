@@ -22,10 +22,11 @@ export default function ProfileShow() {
         <ImageField value={record?.avatar_url ?? ""}
                     width={200}
                     preview={false} />
-        <Title level={5}>Name:<TextField value={record?.full_name} /></Title>
-        <Title level={5}>Role:<TextField value={record?.role} /></Title>
-        <Title level={5}>Team:<TextField value={record?.team} /></Title>
-        <Title level={5}>Skills:<TextField value={record?.skills} /></Title>
+        <Title level={5}>Name:&nbsp;<TextField value={record?.full_name} /></Title>
+        <Title level={5}>Role:&nbsp;<TextField value={record?.role} /></Title>
+        <Title level={5}>Team:&nbsp;<TextField value={record?.team} /></Title>
+        <Title level={5}>Skills:&nbsp;<TextField value={record?.skills} /></Title>
+        <Title level={5}>Contact:&nbsp;<TextField value={record?.phone_number} /></Title>
         </Col>
         <Col span={12}> 
         <Title level={5}>Bio:</Title>

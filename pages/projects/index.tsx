@@ -15,7 +15,7 @@ export default function ProjectList() {
     <Card>
     <List>
     <Table {...tableProps} rowKey="id">
-    <Table.Column dataIndex="image" title="Image"
+    <Table.Column dataIndex="image" title="Icon"
          render={(avatarUrl) => (
           <Avatar shape="square" src={avatarUrl} size={50} icon={<UserOutlined />} />
         )} /> 

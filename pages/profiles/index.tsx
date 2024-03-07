@@ -5,7 +5,7 @@ import { BaseRecord } from "@refinedev/core";
 import { authProvider } from "src/authProvider";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { UserOutlined } from "@ant-design/icons";
+import { PhoneOutlined, UserOutlined } from "@ant-design/icons";
 import CompanyInfo from "@components/CompanyInfo";
 
 export default function ProfileList() {
@@ -33,6 +33,12 @@ export default function ProfileList() {
             <Space>
               <ShowButton hideText size="small" recordItemId={record.id} />
               <EditButton hideText size="small" recordItemId={record.id} />
+              <Button
+                            size="small"
+                            
+                            href={record?.phone_number ?? ""}
+                            icon={<PhoneOutlined />}
+                        />
             </Space>
           )} />
       </Table>
