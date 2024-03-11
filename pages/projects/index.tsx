@@ -20,7 +20,7 @@ export default function ProjectList() {
           <Avatar shape="square" src={avatarUrl} size={50} icon={<UserOutlined />} />
         )} /> 
       <Table.Column dataIndex="projects" title="Project" />
-      <Table.Column dataIndex="content" title="Content"  />
+      <Table.Column dataIndex="content" title="Details"  />
       <Table.Column dataIndex="avatar_url" title="Created By"
          render={(avatarUrl) => (
           <Avatar shape="circle" src={avatarUrl} size={50} icon={<UserOutlined />} />
