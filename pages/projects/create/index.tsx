@@ -31,7 +31,7 @@ export default function ProjectCreate() {
             
         </Form.Item>
         <Form.Item
-            label="Content"
+            label="Details"
             name="content"
             rules={[
                 {
@@ -42,7 +42,7 @@ export default function ProjectCreate() {
             <TextArea rows={4} />
         </Form.Item>
          <Form.Item
-            label="Content"
+            label="Image"
             name="content"
             rules={[
                 {
