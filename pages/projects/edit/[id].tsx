@@ -2,7 +2,7 @@ import { AntdEditInferencer } from "@refinedev/inferencer/antd";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { authProvider } from "src/authProvider";
-import { Typography, Form, Input, InputNumber } from "antd";
+import { Typography, Form, Input, InputNumber, Upload } from "antd";
 import { Edit, useForm } from "@refinedev/antd";
 
 

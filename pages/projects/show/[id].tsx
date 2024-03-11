@@ -4,6 +4,9 @@ import { authProvider } from "src/authProvider";
 import { DateField, ImageField, MarkdownField, Show, TextField } from "@refinedev/antd";
 import { Avatar, Card, Col, CountdownProps, Descriptions, Divider, Row, Space, Statistic, Typography } from "antd";
 import { useShow } from "@refinedev/core";
+import Comments from "@components/Comments";
+
+
 
 
 const { Title } = Typography;
@@ -53,8 +56,12 @@ const onChange: CountdownProps['onChange'] = (val) => {
           <DateField value={record?.event}/>
         </Col>
         <Col span={12} >
-          <Typography.Title level={3}>Comments:</Typography.Title>
-          <Typography.Paragraph><MarkdownField value={record?.comment} /></Typography.Paragraph>
+        <Typography.Title level={3}>Comments:&nbsp;</Typography.Title>
+          <TextField value={record?.comment}>dkjkddj</TextField>
+          <br/><br/>
+          <Avatar src={record?.avatar_url}/>&nbsp;
+          <TextField value={record?.created_by}>dkjkddj</TextField>
+          <Comments/>
           
         </Col>
        

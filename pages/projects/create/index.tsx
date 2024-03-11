@@ -1,14 +1,19 @@
 import { Typography, Form, Input, InputNumber, Select } from "antd";
-import { Create, DateField, useForm } from "@refinedev/antd";
+import { Create, DateField, ImportButton, useForm } from "@refinedev/antd";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { authProvider } from "src/authProvider";
+import Upload from "antd/es/upload/Upload";
+import UploadButton from "@components/UploadButton";
+import { useImport } from "@refinedev/core";
 
 const { Title } = Typography;
 const { TextArea } = Input;
 
 export default function ProjectCreate() {
   const { formProps, saveButtonProps, formLoading } = useForm();
+  const importProps = useImport();
+
 
   return (
     <Create saveButtonProps={saveButtonProps} isLoading={formLoading}>
@@ -23,6 +28,7 @@ export default function ProjectCreate() {
             ]}
         >
             <Input />
+            
         </Form.Item>
         <Form.Item
             label="Content"
@@ -35,6 +41,18 @@ export default function ProjectCreate() {
         >
             <TextArea rows={4} />
         </Form.Item>
+         <Form.Item
+            label="Content"
+            name="content"
+            rules={[
+                {
+                    required: true,
+                },
+            ]}
+        >
+            <UploadButton/>
+        </Form.Item>
+
         <Form.Item
             label="Created By"
             name="created_by"
@@ -53,6 +71,7 @@ export default function ProjectCreate() {
             filterOption={filterOption}
             
             />
+            
         </Form.Item>
       </Form>
     </Create>

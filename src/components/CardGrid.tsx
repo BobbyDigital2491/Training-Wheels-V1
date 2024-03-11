@@ -88,7 +88,7 @@ const CardGrid: React.FC = () => {
         </Col>
       ))}
       {/* Render the modal outside of the data.map loop */}
-      <Modal title={selectedCard?.projects} visible={isModalOpen} onCancel={handleModalClose} footer={null}>
+      <Modal title={selectedCard?.projects} visible={isModalOpen} onCancel={handleModalClose} footer={null} >
         {selectedCard && (
           <>
             <Avatar 
