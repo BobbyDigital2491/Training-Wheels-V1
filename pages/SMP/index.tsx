@@ -15,7 +15,7 @@ export default function SMPList() {
       <Table {...tableProps} rowKey="id">
         <Table.Column dataIndex="no" title="No" />
         <Table.Column dataIndex="work_element" title="Work Element" />
-        <Table.Column dataIndex="plan_no" title="Plan_No" />
+        <Table.Column dataIndex="plan_no" title="Plan-No." />
         <Table.Column dataIndex="element_time" title="Element Time" />
         <Table.Column dataIndex="mv" title="MV[%]" />
         <Table.Column dataIndex="mod" title="Mod" />
