@@ -55,7 +55,7 @@ const ProjectCreate = () => {
       <Form {...formProps} layout="vertical">
         <Form.Item
           label="Project"
-          name="title"
+          name="projects"
           rules={[
             {
               required: true,
@@ -90,7 +90,7 @@ const ProjectCreate = () => {
         </Form.Item>
         <Form.Item
           label="Created By"
-          name="created_by (notes)"
+          name="created_by"
           rules={[
             {
               required: true,

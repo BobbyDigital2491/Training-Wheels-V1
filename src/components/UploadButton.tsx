@@ -1,5 +1,5 @@
 import React from 'react';
-import { InboxOutlined } from '@ant-design/icons';
+import { FileJpgOutlined, InboxOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { message, Upload } from 'antd';
 
@@ -26,7 +26,7 @@ const props: UploadProps = {
 };
 
 const UploadButton: React.FC = () => (
-  <Dragger {...props}>
+  <Dragger {...props} accept='jpg,jpeg,mp4'>
     <p className="ant-upload-drag-icon">
       <InboxOutlined />
     </p>
