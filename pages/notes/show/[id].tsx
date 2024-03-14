@@ -22,7 +22,7 @@ export default function NotesShow() {
       <TextField value={record?.content} />
       <br/><br/><br/><br/>
       <Row gutter={16}>
-      <Col span={6} offset={20}>
+      <Col span={6} offset={18}>
       <Title level={5}>Created At:&nbsp;<DateField
           value={record?.created_at}
           title="Created At"
