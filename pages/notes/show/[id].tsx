@@ -30,7 +30,7 @@ export default function NotesShow() {
           width={150}
           />
           <br/>
-      <TextField value={record?.display_name} />
+      <TextField value={record?.full_name} />
       <Divider/>
       <Title level={5}>Created At</Title>
       <DateField

@@ -1,20 +1,23 @@
 import React from "react";
-import { List, ShowButton, EditButton, useTable, DeleteButton, DateField } from "@refinedev/antd";
+import { List, ShowButton, EditButton, useTable, DeleteButton, DateField, TextField } from "@refinedev/antd";
 import { Avatar, Card, Space, Table } from "antd";
-import { BaseKey, BaseRecord } from "@refinedev/core";
+import { BaseKey, BaseRecord, useDelete } from "@refinedev/core";
 import { authProvider } from "src/authProvider";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { UserOutlined } from "@ant-design/icons";
+import { AntdInferencer } from "@refinedev/inferencer/antd";
 
 export default function NotesList() {
   const { tableProps } = useTable();
-  
-  
+
   type BaseRecord = {
     id?: BaseKey;
     [key: string]: any;
   };
+
+
+  
 
   return (
     <Card>
@@ -27,6 +30,7 @@ export default function NotesList() {
           title="Created By"
           render={(avatarUrl) => (
             <Avatar shape="circle" src={avatarUrl} size={50} icon={<UserOutlined />} />
+            
           )} />
         <Table.Column
           dataIndex="created_at"

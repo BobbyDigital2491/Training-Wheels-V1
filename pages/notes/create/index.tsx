@@ -18,6 +18,8 @@ interface Profile {
   full_name: string;
 }
 
+
+
 const NotesCreate = () => {
   const { formProps, saveButtonProps, formLoading } = useForm();
   const [profiles, setProfiles] = useState<Profile[]>([]);
@@ -89,8 +91,8 @@ const NotesCreate = () => {
             <UploadButton/>
         </Form.Item>
         <Form.Item
-          label="Created By"
-          name="created_by (notes)"
+          label="Name"
+          name="avatar_url"
           rules={[
             {
               required: true,
@@ -100,7 +102,7 @@ const NotesCreate = () => {
         >
           <Select showSearch placeholder="Select a user">
             {profiles.map((profile) => (
-              <Select.Option key={profile.id} value={profile.id}>
+              <Select.Option key={profile.id} value={profile.avatar_url}>
                 <Avatar shape="circle" src={profile.avatar_url} icon={<UserOutlined />} />&nbsp;
                 <Typography.Text>{profile.full_name}</Typography.Text>
               </Select.Option>
