@@ -2,7 +2,7 @@ import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { authProvider } from "src/authProvider";
 import { DateField, ImageField, Show, TextField } from "@refinedev/antd";
-import { Card, Divider, Space, Typography } from "antd";
+import { Card, Col, Divider, Row, Space, Typography } from "antd";
 import { useShow } from "@refinedev/core";
 
 
@@ -17,26 +17,25 @@ export default function NotesShow() {
   return (
     <Show isLoading={isLoading}>
       <Card>
-      <Title level={5}>Title</Title>
-      <TextField value={record?.title ?? ""} />
+      <Title level={1}>{record?.title ?? ""}</Title>
       <Divider/>
-      <Title level={5}>Content</Title>
       <TextField value={record?.content} />
-      <Divider/>
-      <Title level={5}>Created By</Title>
-      <ImageField
-          value={record?.avatar_url}
-          title="Created By"
-          width={150}
-          />
-          <br/>
-      <TextField value={record?.full_name} />
-      <Divider/>
-      <Title level={5}>Created At</Title>
-      <DateField
+      <br/><br/><br/><br/>
+      <Row gutter={16}>
+      <Col span={6} offset={20}>
+      <Title level={5}>Created At:&nbsp;<DateField
           value={record?.created_at}
           title="Created At"
+        /> <Title level={5}>Created By:&nbsp;<ImageField
+        value={record?.avatar_url}
+        title="Created By"
+        width={75}
         />
+        </Title>
+        </Title>
+        </Col>
+        </Row>
+        
       </Card>
     </Show>
   );
