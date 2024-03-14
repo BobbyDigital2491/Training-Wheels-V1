@@ -1,5 +1,5 @@
 import React from "react";
-import { List, ShowButton, EditButton, useTable, DeleteButton, DateField, TextField } from "@refinedev/antd";
+import { List, ShowButton, EditButton, useTable, DeleteButton, DateField } from "@refinedev/antd";
 import { Avatar, Card, Space, Table } from "antd";
 import { BaseKey, BaseRecord, useDelete } from "@refinedev/core";
 import { authProvider } from "src/authProvider";
@@ -30,7 +30,6 @@ export default function NotesList() {
           title="Created By"
           render={(avatarUrl) => (
             <Avatar shape="circle" src={avatarUrl} size={50} icon={<UserOutlined />} />
-            
           )} />
         <Table.Column
           dataIndex="created_at"
@@ -51,6 +50,7 @@ export default function NotesList() {
             </Space>
           )}
         />
+
       </Table>
     </List>
     </Card>

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Typography, Form, Input, Select, Avatar, DatePicker } from "antd";
+import { Typography, Form, Input, Select, Avatar, DatePicker, Upload } from "antd";
 import { Create, useForm } from "@refinedev/antd";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { authProvider } from "src/authProvider";
 import { supabaseClient } from "src/utility";
 import { PostgrestError, PostgrestResponse } from "@supabase/supabase-js";
-import { UserOutlined } from "@ant-design/icons";
-import UploadButton from "@components/UploadButton";
+import { InboxOutlined, UserOutlined } from "@ant-design/icons";
+import { RcFile } from "antd/lib/upload";
 
 const { Title } = Typography;
 const { TextArea } = Input;
@@ -17,8 +17,6 @@ interface Profile {
   avatar_url: string;
   full_name: string;
 }
-
-
 
 const NotesCreate = () => {
   const { formProps, saveButtonProps, formLoading } = useForm();
@@ -49,8 +47,16 @@ const NotesCreate = () => {
   
     fetchProfiles();
   }, []);
-  
-  
+
+  const normalizeFile = (e: any) => {
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e && e.fileList;
+  };
+
+  const MAX_FILE_SIZE_MB = 10; // Maximum file size in megabytes
+  const PERMITTED_FILE_TYPES = ['image/jpeg', 'image/png', 'video/mp4']; // Permitted file types
 
   return (
     <Create saveButtonProps={saveButtonProps} isLoading={formLoading}>
@@ -80,16 +86,47 @@ const NotesCreate = () => {
           <TextArea rows={4} />
         </Form.Item>
         <Form.Item
-            label="Image"
-            name="image"
-            rules={[
-                {
-                    required: false,
-                },
-            ]}
+          label="Images"
+          name="image"
+          valuePropName="fileList"
+          normalize={normalizeFile}
+          noStyle
         >
-            <UploadButton/>
+          <Upload.Dragger
+            name="file"
+            listType="picture"
+            multiple
+            customRequest={async ({ file, onError, onSuccess }) => {
+              try {
+                const rcFile = file as RcFile;
+                await supabaseClient.storage
+                  .from("notes")
+                  .upload(`public/${rcFile.name}`, file, {
+                    cacheControl: "3600",
+                    upsert: true,
+                  });
+
+                const { data } = await supabaseClient.storage
+                  .from("notes")
+                  .getPublicUrl(`public/${rcFile.name}`);
+
+                const xhr = new XMLHttpRequest();
+                onSuccess?.({ url: data?.publicUrl }, xhr);
+              } catch (error) {
+                onError?.(new Error("Upload Error"));
+              }
+            }}
+          >
+             <p className="ant-upload-drag-icon">
+        <InboxOutlined />
+      </p>
+      <p className="ant-upload-text">Click or drag file to this area to upload</p>
+      <p className="ant-upload-hint">
+        Max file size: {MAX_FILE_SIZE_MB}MB. Accepted file types: JPG, PNG, MP4.
+      </p>
+          </Upload.Dragger>
         </Form.Item>
+        <br/>
         <Form.Item
           label="Name"
           name="avatar_url"

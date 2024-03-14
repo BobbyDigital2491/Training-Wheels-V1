@@ -34,6 +34,9 @@ export default function NotesShow() {
         </Title>
         </Title>
         </Col>
+        <Col>
+        <ImageField value={record?.image}/>
+        </Col>
         </Row>
         
       </Card>
