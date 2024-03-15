@@ -19,7 +19,7 @@ interface Profile {
 }
 
 const NotesCreate = () => {
-  const { formProps, saveButtonProps, formLoading } = useForm();
+  const { formProps, saveButtonProps, form } = useForm();
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -32,8 +32,8 @@ const NotesCreate = () => {
           throw new Error((error as PostgrestError).message);
         }
         if (Array.isArray(data) && data.length > 0) {
-          const flattenedData: Profile[] = data.flat(); // Flatten the array if necessary
-          setProfiles(flattenedData); // Update state with the array of profiles
+          const flattenedData: Profile[] = data.flat();
+          setProfiles(flattenedData);
         } else {
           throw new Error("Data is not in the expected format");
         }
@@ -55,11 +55,30 @@ const NotesCreate = () => {
     return e && e.fileList;
   };
 
-  const MAX_FILE_SIZE_MB = 10; // Maximum file size in megabytes
-  const PERMITTED_FILE_TYPES = ['image/jpeg', 'image/png', 'video/mp4']; // Permitted file types
+  const handleUpload = async (file: RcFile | string, imageName: string) => {
+    try {
+      const formData = new FormData();
+      formData.append('file', file as Blob);
+      formData.append('name', imageName);
+
+      const response = await fetch('/api/upload-image', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Image uploaded successfully:', data);
+      } else {
+        throw new Error('Failed to upload image');
+      }
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    }
+  };
 
   return (
-    <Create saveButtonProps={saveButtonProps} isLoading={formLoading}>
+    <Create saveButtonProps={saveButtonProps} >
       <Form {...formProps} layout="vertical">
         <Form.Item
           label="Title"
@@ -86,46 +105,59 @@ const NotesCreate = () => {
           <TextArea rows={4} />
         </Form.Item>
         <Form.Item
-          label="Images"
-          name="image"
-          valuePropName="fileList"
-          normalize={normalizeFile}
-          noStyle
+          label="Image Name"
+          name="image_name" // Update field name to "name"
+          rules={[
+            {
+              required: true,
+              message: 'Please input the image name!',
+            },
+          ]}
         >
-          <Upload.Dragger
-            name="file"
-            listType="picture"
-            multiple
-            customRequest={async ({ file, onError, onSuccess }) => {
-              try {
-                const rcFile = file as RcFile;
-                await supabaseClient.storage
-                  .from("notes")
-                  .upload(`public/${rcFile.name}`, file, {
-                    cacheControl: "3600",
-                    upsert: true,
-                  });
-
-                const { data } = await supabaseClient.storage
-                  .from("notes")
-                  .getPublicUrl(`public/${rcFile.name}`);
-
-                const xhr = new XMLHttpRequest();
-                onSuccess?.({ url: data?.publicUrl }, xhr);
-              } catch (error) {
-                onError?.(new Error("Upload Error"));
-              }
-            }}
+          <Input />
+        </Form.Item>
+        <Form.Item label="Image">
+          <Form.Item
+            name="image"
+            valuePropName="fileList"
+            normalize={normalizeFile}
+            noStyle
           >
-             <p className="ant-upload-drag-icon">
+            <Upload.Dragger
+              name="file"
+              listType="picture"
+              multiple
+              customRequest={async ({ file, onError, onSuccess }) => {
+                try {
+                  const rcFile = file as RcFile;
+                  await supabaseClient.storage
+                    .from("images")
+                    .upload(`public/${rcFile.name}`, file, {
+                      cacheControl: "3600",
+                      upsert: true,
+                    });
+
+                  const { data } = await supabaseClient.storage
+                    .from("images")
+                    .getPublicUrl(`public/${rcFile.name}`);
+
+                  const xhr = new XMLHttpRequest();
+                  onSuccess?.({ url: data?.publicUrl }, xhr);
+                } catch (error) {
+                  onError?.(new Error("Upload Error"));
+                }
+              }}
+            >
+              <p className="ant-upload-drag-icon">
         <InboxOutlined />
       </p>
       <p className="ant-upload-text">Click or drag file to this area to upload</p>
       <p className="ant-upload-hint">
-        Max file size: {MAX_FILE_SIZE_MB}MB. Accepted file types: JPG, PNG, MP4.
+        Accepted file types: JPG, PNG, MP4.
       </p>
-          </Upload.Dragger>
-        </Form.Item>
+            </Upload.Dragger>
+          </Form.Item>
+          </Form.Item>
         <br/>
         <Form.Item
           label="Name"

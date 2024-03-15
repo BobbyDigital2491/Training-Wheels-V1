@@ -35,7 +35,7 @@ export default function NotesShow() {
         </Title>
         </Col>
         <Col>
-        <ImageField value={record?.image}/>
+        <ImageField value={record?.image} width={75}/>
         </Col>
         </Row>
         
