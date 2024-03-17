@@ -55,7 +55,7 @@ const TaskCreate = () => {
       <Form {...formProps} layout="vertical">
         <Form.Item
           label="Task"
-          name="title"
+          name="task"
           rules={[
             {
               required: true,
@@ -102,7 +102,7 @@ const TaskCreate = () => {
         </Form.Item>
         <Form.Item
           label="Created By"
-          name="created_by (notes)"
+          name="created_by"
           rules={[
             {
               required: true,
