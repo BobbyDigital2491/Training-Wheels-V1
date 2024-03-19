@@ -14,6 +14,7 @@ export default function TrainingList() {
   return (
     <Card>
       <Title level={3} >Training Modules</Title>
+      <Text>Click on image to open modal.</Text>
       <Divider/>
       <TrainingModal/>
       
