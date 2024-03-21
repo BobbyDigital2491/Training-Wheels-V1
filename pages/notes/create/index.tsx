@@ -16,6 +16,7 @@ interface Profile {
   id: number;
   avatar_url: string;
   full_name: string;
+  created_by: string;
 }
 
 const NotesCreate = () => {
@@ -106,7 +107,7 @@ const NotesCreate = () => {
         </Form.Item>
         <Form.Item
           label="Image Name"
-          name="image_name" // Update field name to "name"
+          name="name" // Update field name to "name"
           rules={[
             {
               required: true,
@@ -173,7 +174,7 @@ const NotesCreate = () => {
             {profiles.map((profile) => (
               <Select.Option key={profile.id} value={profile.avatar_url}>
                 <Avatar shape="circle" src={profile.avatar_url} icon={<UserOutlined />} />&nbsp;
-                <Typography.Text>{profile.full_name}</Typography.Text>
+                <Typography.Text>{profile.full_name}{profile.created_by}</Typography.Text>
               </Select.Option>
             ))}
           </Select>

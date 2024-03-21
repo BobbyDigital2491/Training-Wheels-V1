@@ -11,7 +11,7 @@ import Comments from "@components/Comments";
 
 const { Title } = Typography;
 
-export default function ProjectsShow() {
+export default function NotesShow() {
   const { queryResult } = useShow();
   const { data, isLoading } = queryResult;
 
@@ -36,9 +36,8 @@ const onChange: CountdownProps['onChange'] = (val) => {
       <Card>
       <Row gutter={8}>
         <Col span={12} flex={2} >
-        <Avatar src={record?.image ?? ""}
-                    shape="square"
-                    size={300}
+        <ImageField value={record?.image ?? ""}
+                    
                     />
         </Col>
 
